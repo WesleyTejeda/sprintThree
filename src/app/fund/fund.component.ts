@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GetService } from '../services/get.service';
 
 @Component({
   selector: 'app-fund',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FundComponent implements OnInit {
 
-  constructor() { }
+  constructor(private getService: GetService) { }
 
   ngOnInit(): void {
+    
   }
 
 }
