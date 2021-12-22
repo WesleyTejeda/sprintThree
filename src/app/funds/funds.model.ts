@@ -8,5 +8,5 @@ export interface Fund {
     sector: string,
     industry: string,
     headquarters: string,
-    id: number
+    id?: number
 }

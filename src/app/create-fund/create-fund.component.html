@@ -1,0 +1,49 @@
+<a routerLink="/funds">Go back to funds</a>
+<br>
+<hr>
+<div class="input-group">
+    <span class="input-group-text">Company</span>
+    <input [(ngModel)]="fund.company" type="text" class="form-control">
+</div>
+<div class="input-group">
+    <span class="input-group-text">Open</span>
+    <input [(ngModel)]="fund.open" type="text" class="form-control">
+</div>
+<div class="input-group">
+    <span class="input-group-text">Volume</span>
+    <input [(ngModel)]="fund.volume" type="text" class="form-control">
+</div>
+<div class="input-group">
+    <span class="input-group-text">Today's Range</span>
+    <span class="input-group-text bg-light">From</span>
+    <input [(ngModel)]="todaysRangeFirst" type="text" class="form-control">
+    <span class="input-group-text bg-light">To</span>
+    <input [(ngModel)]="todaysRangeLast" type="text" class="form-control">
+</div>
+<div class="input-group">
+    <span class="input-group-text">Yearly Range</span>
+    <span class="input-group-text bg-light">From</span>
+    <input [(ngModel)]="yearlyRangeFirst" type="text" class="form-control">
+    <span class="input-group-text bg-light">To</span>
+    <input [(ngModel)]="yearlyRangeLast" type="text" class="form-control">
+</div>
+<div class="input-group">
+    <span class="input-group-text">Market Cap</span>
+    <input [(ngModel)]="fund.martketCap" type="text" class="form-control">
+</div>
+<div class="input-group">
+    <span class="input-group-text">Sector</span>
+    <input [(ngModel)]="fund.sector" type="text" class="form-control">
+</div>
+<div class="input-group">
+    <span class="input-group-text">Industry</span>
+    <input [(ngModel)]="fund.industry" type="text" class="form-control">
+</div>
+<div class="input-group">
+    <span class="input-group-text">Headquarters</span>
+    <input [(ngModel)]="fund.headquarters" type="text" class="form-control">
+</div>
+<div class="align-items-center" style="width: 100vw; align-items: center;">
+    <div class="error-info" *ngIf="error">All Fields Required. Please Enter All Fields</div>
+    <button (click)="createFund()" class="button btn-success col-6">Create Company Fund</button>
+</div>

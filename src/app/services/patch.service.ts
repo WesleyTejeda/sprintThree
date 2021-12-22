@@ -5,16 +5,12 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class GetService {
+export class PatchService {
   URL:string = "http://localhost:8082/api/funds/";
 
   constructor(private httpClient: HttpClient) { }
 
-  getData(): Observable<any> {
-    return this.httpClient.get(this.URL)
-  }
-
-  getSingleFund(id:number): Observable<any> {
-    return this.httpClient.get(this.URL+id)
+  patchFund(fund:object, id:number): Observable<any> {
+    return this.httpClient.patch(this.URL+id, fund);
   }
 }

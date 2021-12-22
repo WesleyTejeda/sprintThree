@@ -5,16 +5,12 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class GetService {
+export class CreateService {
   URL:string = "http://localhost:8082/api/funds/";
 
   constructor(private httpClient: HttpClient) { }
 
-  getData(): Observable<any> {
-    return this.httpClient.get(this.URL)
-  }
-
-  getSingleFund(id:number): Observable<any> {
-    return this.httpClient.get(this.URL+id)
+  createFund(fund: object): Observable<any> {
+    return this.httpClient.post(this.URL, fund)
   }
 }

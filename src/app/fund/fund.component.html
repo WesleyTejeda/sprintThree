@@ -1,1 +1,16 @@
-<p>fund works!</p>
+<a routerLink="/funds">Go back to funds</a>
+<hr>
+<br>
+<h3>{{fund.company}}</h3>
+<a [routerLink]="'/funds/'+fund.id+'/edit'">
+    <button class="button btn-info">Edit this Company</button>
+</a>
+<p>Open: ${{fund.open}}</p>
+<p>Volume: {{fund.volume}}</p>
+<p>Range Today: ${{fund.todaysRange.split(" - ")[0]}} to ${{fund.todaysRange.split(" - ")[1]}}</p>
+<p>Yearly Range: ${{fund.yearlyRange.split(" - ")[0]}} to ${{fund.yearlyRange.split(" - ")[1]}}</p>
+<p>Market Cap: {{fund.martketCap}}</p>
+<h4>Company Info</h4>
+<p>Sector: {{fund.sector}}</p>
+<p>Industry: {{fund.industry}}</p>
+<p>Headquarters Location: {{fund.headquarters}}</p>

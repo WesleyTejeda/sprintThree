@@ -1,17 +1,16 @@
-<div *ngFor="let fund of funds">
-    <div>
-        <a [routerLink]="['/funds/', fund.id ]">
+<div>
+    <button routerLink="/funds/create" type="button" class="btn btn-info">
+        Create Company Listing
+    </button>
+</div>
+<div class="row" *ngFor="let fund of funds">
+    <ul class="list-group list-group-flush" >
+        <li class="list-group-item">
             <h3>{{fund.company}}</h3>
-        </a>
-        <h4>Stock Info</h4>
-        <p>Open: {{fund.open}}</p>
-        <p>Volume: {{fund.volume}}</p>
-        <p>Range Today: {{fund.todaysRange}}</p>
-        <p>Yearly Range: {{fund.yearlyRange}}</p>
-        <p>Market Cap: {{fund.martketCap}}</p>
-        <h4>Company Info</h4>
-        <p>Sector: {{fund.sector}}</p>
-        <p>Industry: {{fund.industry}}</p>
-        <p>Headquarters Location: {{fund.headquarters}}</p>
-    </div>
+                <button [routerLink]="['/funds/', fund.id ]" type="button" class="btn btn-warning">
+                    View This Company
+                </button>
+            <hr>
+        </li>
+    </ul>
 </div>
