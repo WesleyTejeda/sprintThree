@@ -1,4 +1,13 @@
-<a routerLink="/funds">Go back to funds</a>
+<nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a routerLink="/funds">Go back to funds</a>
+        </li>
+        <li class="breadcrumb-item">
+            <span>Creating {{fund.company}}</span>
+        </li>
+    </ol>
+</nav>
 <br>
 <hr>
 <div class="input-group">
@@ -43,7 +52,9 @@
     <span class="input-group-text">Headquarters</span>
     <input [(ngModel)]="fund.headquarters" type="text" class="form-control">
 </div>
-<div class="align-items-center" style="width: 100vw; align-items: center;">
-    <div class="error-info" *ngIf="error">All Fields Required. Please Enter All Fields</div>
+<div class="vstack gap-2 col-md-5 mx-auto mt-3" style="width: 100vw; align-items: center;">
+    <div class="alert alert-danger" role="alert"*ngIf="error">
+        All Fields Required. Please Enter All Fields
+    </div>
     <button (click)="createFund()" class="button btn-success col-6">Create Company Fund</button>
 </div>

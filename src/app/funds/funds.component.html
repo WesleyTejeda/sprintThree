@@ -1,16 +1,18 @@
-<div>
-    <button routerLink="/funds/create" type="button" class="btn btn-info">
-        Create Company Listing
-    </button>
-</div>
-<div class="row" *ngFor="let fund of funds">
-    <ul class="list-group list-group-flush" >
-        <li class="list-group-item">
-            <h3>{{fund.company}}</h3>
-                <button [routerLink]="['/funds/', fund.id ]" type="button" class="btn btn-warning">
-                    View This Company
-                </button>
-            <hr>
-        </li>
-    </ul>
+<div class="container">
+    <div class="w-100 text-center mt-3 mb-3" style="align-items: center;">
+        <button routerLink="/funds/create" type="button" class="btn btn-info">
+            Create Company Listing
+        </button>
+    </div>
+    <div class="row" *ngFor="let fund of funds">
+        <div class="list-group">
+            <a [routerLink]="['/funds/', fund.id ]" class="list-group-item list-group-item-action text-center p-3">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1 w-100">{{fund.company}}</h5>
+              </div>
+              <p class="mb-1">{{fund.sector}}</p>
+              <small>{{fund.industry}}</small>
+            </a>
+        </div>
+    </div>
 </div>

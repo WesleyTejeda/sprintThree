@@ -11,7 +11,7 @@ import { PatchService } from '../services/patch.service';
   styleUrls: ['./edit-fund.component.css']
 })
 export class EditFundComponent implements OnInit {
-  // editType: string = this.router.url.split("/")[this.router.url.split("/").length - 1];
+  error:boolean = false;
   id:number = 0;
   shouldDelete:boolean = false;
   todaysRangeFirst:string = "";
@@ -28,7 +28,6 @@ export class EditFundComponent implements OnInit {
     sector: "",
     industry: "",
     headquarters: "",
-    id: 0
   };
 
   constructor(private router: Router,
@@ -39,7 +38,6 @@ export class EditFundComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe( ({ id }) => {
-      // console.log(this.router.url.split("/")[this.router.url.split("/").length - 1])
       this.id = id;
       this.getService.getSingleFund(id).subscribe(fund => {
         this.fund = fund;
@@ -53,8 +51,32 @@ export class EditFundComponent implements OnInit {
   }
 
   patchFund(){
-    this.fund.yearlyRange = `${this.yearlyRangeFirst} - ${this.yearlyRangeLast}`;
-    this.fund.todaysRange = `${this.todaysRangeFirst} - ${this.todaysRangeLast}`;
+    this.error = false;
+    //Correct range format
+    this.fund.yearlyRange = `${this.yearlyRangeFirst.trim()} - ${this.yearlyRangeLast.trim()}`;
+    this.fund.todaysRange = `${this.todaysRangeFirst.trim()} - ${this.todaysRangeLast.trim()}`;
+    //Validates empty ranges, shows error
+    if( this.fund.yearlyRange.length <= 3 || this.fund.yearlyRange.length <= 3){
+      this.error = true;
+      return
+    }
+    //Validates empty entry fields, shows error if empty
+    let fundCopy:any = this.fund;
+    delete fundCopy.yearlyRange;
+    delete fundCopy.todaysRange;
+    for (let key in fundCopy){
+      if( fundCopy[key].length == 0){
+        this.error = true;
+        return
+      }
+    }
+    //Correct formatting for ranges and trim white space before patching
+    this.fund.company = this.fund.company.trim();
+    this.fund.open = this.fund.open.trim();
+    this.fund.martketCap = this.fund.martketCap.trim();
+    this.fund.sector = this.fund.sector.trim();
+    this.fund.industry = this.fund.industry.trim();
+    this.fund.headquarters = this.fund.headquarters.trim();
     this.patchService.patchFund(this.fund, this.id).subscribe(res => {
       this.router.navigateByUrl("/funds/"+this.id);
     })

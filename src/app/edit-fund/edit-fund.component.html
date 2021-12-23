@@ -1,50 +1,69 @@
-<a routerLink="/funds">Go back to funds</a>
-<br>
+<nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a routerLink="/funds">Go back to funds</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a [routerLink]="['/funds/', fund.id]">Go back to {{fund.company}}</a>
+        </li>
+        <li class="breadcrumb-item">
+            Edit {{fund.company}}
+        </li>
+    </ol>
+</nav>
 <hr>
-<div class="input-group">
-    <span class="input-group-text">Company</span>
-    <input [(ngModel)]="fund.company" type="text" class="form-control">
-</div>
-<div class="input-group">
-    <span class="input-group-text">Open</span>
-    <input [(ngModel)]="fund.open" type="text" class="form-control">
-</div>
-<div class="input-group">
-    <span class="input-group-text">Volume</span>
-    <input [(ngModel)]="fund.volume" type="text" class="form-control">
-</div>
-<div class="input-group">
-    <span class="input-group-text">Today's Range</span>
-    <span class="input-group-text bg-light">From</span>
-    <input [(ngModel)]="todaysRangeFirst" type="text" class="form-control">
-    <span class="input-group-text bg-light">To</span>
-    <input [(ngModel)]="todaysRangeLast" type="text" class="form-control">
-</div>
-<div class="input-group">
-    <span class="input-group-text">Yearly Range</span>
-    <span class="input-group-text bg-light">From</span>
-    <input [(ngModel)]="yearlyRangeFirst" type="text" class="form-control">
-    <span class="input-group-text bg-light">To</span>
-    <input [(ngModel)]="yearlyRangeLast" type="text" class="form-control">
-</div>
-<div class="input-group">
-    <span class="input-group-text">Market Cap</span>
-    <input [(ngModel)]="fund.martketCap" type="text" class="form-control">
-</div>
-<div class="input-group">
-    <span class="input-group-text">Sector</span>
-    <input [(ngModel)]="fund.sector" type="text" class="form-control">
-</div>
-<div class="input-group">
-    <span class="input-group-text">Industry</span>
-    <input [(ngModel)]="fund.industry" type="text" class="form-control">
-</div>
-<div class="input-group">
-    <span class="input-group-text">Headquarters</span>
-    <input [(ngModel)]="fund.headquarters" type="text" class="form-control">
-</div>
-<div class="align-items-center" style="width: 100vw; align-items: center;">
-    <button (click)="patchFund()" class="button btn-success col-6">Update Changes</button>
-    <button (click)="toggleDelete()" class="button btn-danger col-6" *ngIf="!shouldDelete">Delete this Company</button>
-    <button (click)="deleteFund()" class="button btn-warning col-6" *ngIf="shouldDelete">Are You Sure?</button>
+<br>
+<div class="container">
+    <br>
+    <hr>
+    <div class="input-group">
+        <span class="input-group-text">Company</span>
+        <input [(ngModel)]="fund.company" type="text" class="form-control">
+    </div>
+    <div class="input-group">
+        <span class="input-group-text">Open</span>
+        <input [(ngModel)]="fund.open" type="text" class="form-control">
+    </div>
+    <div class="input-group">
+        <span class="input-group-text">Volume</span>
+        <input [(ngModel)]="fund.volume" type="text" class="form-control">
+    </div>
+    <div class="input-group">
+        <span class="input-group-text">Today's Range</span>
+        <span class="input-group-text bg-light">From</span>
+        <input [(ngModel)]="todaysRangeFirst" type="text" class="form-control">
+        <span class="input-group-text bg-light">To</span>
+        <input [(ngModel)]="todaysRangeLast" type="text" class="form-control">
+    </div>
+    <div class="input-group">
+        <span class="input-group-text">Yearly Range</span>
+        <span class="input-group-text bg-light">From</span>
+        <input [(ngModel)]="yearlyRangeFirst" type="text" class="form-control">
+        <span class="input-group-text bg-light">To</span>
+        <input [(ngModel)]="yearlyRangeLast" type="text" class="form-control">
+    </div>
+    <div class="input-group">
+        <span class="input-group-text">Market Cap</span>
+        <input [(ngModel)]="fund.martketCap" type="text" class="form-control">
+    </div>
+    <div class="input-group">
+        <span class="input-group-text">Sector</span>
+        <input [(ngModel)]="fund.sector" type="text" class="form-control">
+    </div>
+    <div class="input-group">
+        <span class="input-group-text">Industry</span>
+        <input [(ngModel)]="fund.industry" type="text" class="form-control">
+    </div>
+    <div class="input-group">
+        <span class="input-group-text">Headquarters</span>
+        <input [(ngModel)]="fund.headquarters" type="text" class="form-control">
+    </div>
+    <div class="vstack gap-2 col-md-5 mx-auto mt-3" style="width: 100vw; align-items: center;">
+        <div class="alert alert-danger" role="alert"*ngIf="error">
+            All Fields Required. Please Enter All Fields
+        </div>
+        <button (click)="patchFund()" class="button btn-success col-6">Update Changes</button>
+        <button (click)="toggleDelete()" class="button btn-danger col-6" *ngIf="!shouldDelete">Delete this Company</button>
+        <button (click)="deleteFund()" class="button btn-warning col-6" *ngIf="shouldDelete">Are You Sure?</button>
+    </div>
 </div>

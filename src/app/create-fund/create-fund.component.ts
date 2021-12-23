@@ -32,10 +32,40 @@ export class CreateFundComponent implements OnInit {
 
   createFund(): void {
     this.error = false;
-    this.fund.yearlyRange = `${this.yearlyRangeFirst} - ${this.yearlyRangeLast}`;
-    this.fund.todaysRange = `${this.todaysRangeFirst} - ${this.todaysRangeLast}`;
+    //Correct range format
+    this.fund.yearlyRange = `${this.yearlyRangeFirst.trim()} - ${this.yearlyRangeLast.trim()}`;
+    this.fund.todaysRange = `${this.todaysRangeFirst.trim()} - ${this.todaysRangeLast.trim()}`;
+    //Validates empty ranges, shows error
+    if( this.fund.yearlyRange.length <= 3 || this.fund.yearlyRange.length <= 3){
+      this.error = true;
+      return
+    }
+    //Validates empty entry fields, shows error if empty
+    let fundCopy:any = {
+      company: this.fund.company,
+      open: this.fund.open,
+      volume: this.fund.volume,
+      martketCap: this.fund.martketCap,
+      sector: this.fund.sector,
+      industry: this.fund.industry,
+      headquarters: this.fund.headquarters
+    }
+    for (let key in fundCopy){
+      console.log(fundCopy[key].length)
+      if( fundCopy[key].length == 0){
+        this.error = true;
+        return
+      }
+    }
+    
+    //Send fund with white space trim
+    this.fund.company = this.fund.company.trim();
+    this.fund.open = this.fund.open.trim();
+    this.fund.martketCap = this.fund.martketCap.trim();
+    this.fund.sector = this.fund.sector.trim();
+    this.fund.industry = this.fund.industry.trim();
+    this.fund.headquarters = this.fund.headquarters.trim();
     this.createService.createFund(this.fund).subscribe(res => {
-      console.log(res);
       this.router.navigateByUrl("/funds");
     })
   }

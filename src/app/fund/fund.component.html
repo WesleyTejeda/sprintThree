@@ -1,16 +1,37 @@
-<a routerLink="/funds">Go back to funds</a>
+<nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a routerLink="/funds">Go back to funds</a>
+        </li>
+        <li class="breadcrumb-item">
+            <span>View {{fund.company}}</span>
+        </li>
+    </ol>
+</nav>
 <hr>
 <br>
-<h3>{{fund.company}}</h3>
-<a [routerLink]="'/funds/'+fund.id+'/edit'">
-    <button class="button btn-info">Edit this Company</button>
-</a>
-<p>Open: ${{fund.open}}</p>
-<p>Volume: {{fund.volume}}</p>
-<p>Range Today: ${{fund.todaysRange.split(" - ")[0]}} to ${{fund.todaysRange.split(" - ")[1]}}</p>
-<p>Yearly Range: ${{fund.yearlyRange.split(" - ")[0]}} to ${{fund.yearlyRange.split(" - ")[1]}}</p>
-<p>Market Cap: {{fund.martketCap}}</p>
-<h4>Company Info</h4>
-<p>Sector: {{fund.sector}}</p>
-<p>Industry: {{fund.industry}}</p>
-<p>Headquarters Location: {{fund.headquarters}}</p>
+<div class="card container">
+    <div class="card-header row p-0 pt-3">
+        <h3 class="col">{{fund.company}}</h3>
+        <a class="col-2" [routerLink]="'/funds/'+fund.id+'/edit'">
+            <button class="button btn-info">Edit this Company</button>
+        </a>
+    </div>
+    <ul class="list-group list-group-flush mt-2 mb-2">
+        <h4 class="mt-3">Stock Info</h4>
+        <hr>
+        <div>Open: ${{fund.open}}</div>
+        <div>Volume: {{fund.volume}}</div>
+        <div>Range Today: ${{fund.todaysRange.split(" - ")[0]}} to ${{fund.todaysRange.split(" - ")[1]}}</div>
+        <div>Yearly Range: ${{fund.yearlyRange.split(" - ")[0]}} to ${{fund.yearlyRange.split(" - ")[1]}}</div>
+        <div>Market Cap: {{fund.martketCap}}</div>
+        <h4 class="mt-3">Company Info</h4>
+        <hr>
+        <div>Sector: {{fund.sector}}</div>
+        <div>Industry: {{fund.industry}}</div>
+        <div>Headquarters Location: {{fund.headquarters}}</div>
+        <div>
+            
+        </div>
+    </ul>
+</div>
